@@ -1,6 +1,5 @@
 {
-  "XINXINKE_ID": "62d8fd112e3c405fbb00695287a3a6d4",
-  "XINXINKE_KEY": "a95e707f5ccf4899b1aa1c0c5172ca18",
-  "MONGO_URI": "mongodb://127.0.0.1:27017/gdd-platform",
+  "JUDGE_CWD": "/tmp/judger",
+  "MONGO_URI": "mongodb://127.0.0.1:27017/easyasm",
   "PORT": 3000
 }

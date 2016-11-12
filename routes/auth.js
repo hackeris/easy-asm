@@ -2,7 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 
 var router = express.Router();
-var User = mongoose.model('AsmCode');
+var User = mongoose.model('User');
 
 router.post('/user', async function (req, res) {
 
@@ -56,7 +56,9 @@ router.post('/user/register', async function (req, res) {
     } else {
       user = await User.create(req.body);
       req.session.user = user;
-      res.send(user);
+      res.send({
+        _id: user._id
+      });
     }
   }
 });

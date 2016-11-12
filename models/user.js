@@ -17,4 +17,4 @@ var userSchema = Schema({
 });
 
 userSchema.set('toObject', {getters: true});
-mongoose.model('AsmCode', userSchema);
+mongoose.model('User', userSchema);
