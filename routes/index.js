@@ -12,11 +12,7 @@ router.get('/login', function (req, res) {
 });
 
 router.get('/run', function (req, res) {
-  if (req.session.user) {
-    res.render('run');
-  } else {
-    res.redirect('/login');
-  }
+  res.render('run');
 });
 
 module.exports = {
