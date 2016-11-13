@@ -6,11 +6,19 @@ router.get('/', function (req, res) {
   res.render('index', {title: 'Express'});
 });
 
-router.get('/run', function (req, res) {
-  res.render('run');
+router.get('/login', function (req, res) {
+  res.render('login');
 });
 
-module.exports = module.exports = {
+router.get('/run', function (req, res) {
+  if (req.session.user) {
+    res.render('run');
+  } else {
+    res.redirect('/login');
+  }
+});
+
+module.exports = {
   url: '/',
   router: router
 };

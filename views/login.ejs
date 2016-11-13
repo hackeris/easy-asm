@@ -1,0 +1,70 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="/public/stylesheets/pure-min.css">
+    <style type="text/css">
+
+        form {
+            width: 300px;
+            margin: 200px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<form class="pure-form pure-form-stacked">
+    <fieldset>
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Email">
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Password">
+        <button onclick="doRegister()" type="button" class="pure-button">Register</button>
+        <button onclick="doLogin()" type="button" class="pure-button">Login</button>
+    </fieldset>
+</form>
+
+<script type="text/javascript" src="/public/javascripts/fetch.js"></script>
+<script type="text/javascript">
+
+    function getFormData() {
+        $ = function (id) {
+            return document.getElementById(id);
+        }
+        return {
+            email: $('email').value,
+            password: $('password').value
+        }
+    }
+
+    function doLogin() {
+        var data = getFormData();
+        fetch('/auth/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+            credentials: 'same-origin'
+        }).then(function (resp) {
+            return resp.json();
+        }).then(function (json) {
+            window.location.href = '/run';
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+
+    function doRegister() {
+
+    }
+
+</script>
+
+</body>
+</html>
