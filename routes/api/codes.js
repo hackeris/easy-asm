@@ -33,7 +33,6 @@ router.post('/run', async function (req, res) {
         res.send(result);
       });
     } else {
-      await AsmCode.create({code: req.body.code});
       judger.enqueue(req.body.code, function (result) {
         res.send(result);
       });
