@@ -20,7 +20,7 @@ function init() {
     "all: clean program\n" +
     "\n" +
     "program: program.o\n" +
-    "\tld -melf_i386 $+ -o $@\n" +
+    "\tgcc -m32 $+ -o $@\n" +
     "\n" +
     "program.o: program.asm\n" +
     "\tnasm -f elf $< -o $@\n" +
