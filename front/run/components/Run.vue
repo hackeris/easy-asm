@@ -13,13 +13,33 @@
 </template>
 <style>
 
-    #run-container {
-        width: 80%;
-        margin: 20px auto;
+    @media screen and (min-width: 600px) {
+        #run-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        #editor-container {
+            margin: 20px 0;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        #run-container {
+            width: 95%;
+            margin: auto;
+        }
+
+        #run-container > h1 {
+            margin: 5px;
+        }
+
+        #editor-container {
+            margin: 10px 0;
+        }
     }
 
     #editor-container {
-        margin: 20px 0;
         border-style: solid;
         border-width: 1px;
         border-color: #ddd;

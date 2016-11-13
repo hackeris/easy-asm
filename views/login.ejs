@@ -3,11 +3,12 @@
     <meta charset="utf-8">
     <title>登录</title>
     <link rel="stylesheet" href="/public/stylesheets/pure-min.css">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <style type="text/css">
 
         form {
             width: 300px;
-            margin: 200px auto;
+            margin: 180px auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -61,7 +62,21 @@
     }
 
     function doRegister() {
-
+        var data = getFormData();
+        fetch('/auth/user/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+            credentials: 'same-origin'
+        }).then(function (resp) {
+            return resp.json();
+        }).then(function (json) {
+            window.location.href = '/run';
+        }).catch(function (error) {
+            console.log(error);
+        });
     }
 
 </script>

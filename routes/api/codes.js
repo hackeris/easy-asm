@@ -28,13 +28,14 @@ router.post('/run', async function (req, res) {
     res.status(400).send(errors);
   } else {
     if (req.session.user) {
-      await AsmCode.create({code: req.body.code});
+      await AsmCode.create({code: req.body.code, user: req.session.user._id});
       judger.enqueue(req.body.code, function (result) {
         res.send(result);
       });
     } else {
-      res.status(401).send({
-        message: "Permission denied"
+      await AsmCode.create({code: req.body.code});
+      judger.enqueue(req.body.code, function (result) {
+        res.send(result);
       });
     }
   }
