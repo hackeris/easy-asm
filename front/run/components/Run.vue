@@ -60,7 +60,7 @@
             CodeMirror.on(editor, 'change', function () {
                 this.code = editor.getValue();
             }.bind(this));
-            editor.setValue('main:\n\tmov eax, 0\n\tret\n');
+            editor.setValue('global main\n\nmain:\n\tmov eax, 0\n\tret\n');
         },
         methods: {
             run: function () {
