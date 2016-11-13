@@ -31,7 +31,7 @@ function init() {
 }
 
 function run(callback) {
-  exec('./program', {cwd: config.JUDGE_CWD}, callback);
+  exec('./program', {cwd: config.JUDGE_CWD, timeout: 500}, callback);
 }
 
 function judge(code, callback) {
