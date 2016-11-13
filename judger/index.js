@@ -11,8 +11,23 @@ var config = require('../config/config.json');
 
 function compile(code, callback) {
   fs.writeFile(path.join(config.JUDGE_CWD, 'program.asm'), code, function () {
-    exec('pwd; ls ' + code, {cwd: config.JUDGE_CWD}, callback);
+    exec('make', {cwd: config.JUDGE_CWD}, callback);
   });
+}
+
+function init() {
+  var makefile =
+    "all: clean program\n" +
+    "\n" +
+    "program: program.o\n" +
+    "\tld -melf_i386 $+ -o $@\n" +
+    "\n" +
+    "program.o: program.asm\n" +
+    "\tnasm -f elf $< -o $@\n" +
+    "\n" +
+    "clean:\n" +
+    "\trm -vf program *.o\n";
+  fs.writeFileSync(path.join(config.JUDGE_CWD, 'Makefile'), makefile);
 }
 
 function run(callback) {
@@ -59,6 +74,8 @@ jobs.process('code', function (job, done) {
   });
 });
 
+
 module.exports = {
-  enqueue: enqueue
+  enqueue: enqueue,
+  init: init
 };

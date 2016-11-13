@@ -27,16 +27,16 @@ router.post('/run', async function (req, res) {
   if (errors) {
     res.status(400).send(errors);
   } else {
-    // if (req.session.user) {
-    await AsmCode.create({code: req.body.code});
-    judger.enqueue(req.body.code, function (result) {
-      res.send(result);
-    });
-    // } else {
-    //   res.status(401).send({
-    //     message: "Permission denied"
-    //   });
-    // }
+    if (req.session.user) {
+      await AsmCode.create({code: req.body.code});
+      judger.enqueue(req.body.code, function (result) {
+        res.send(result);
+      });
+    } else {
+      res.status(401).send({
+        message: "Permission denied"
+      });
+    }
   }
 });
 

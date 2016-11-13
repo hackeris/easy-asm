@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var expressValidator = require('express-validator');
 var session = require('express-session');
+var judger = require('./judger');
 
 var config = require('./config/config.json');
 
@@ -86,5 +87,6 @@ app.use(function (err, req, res, next) {
   });
 });
 
+judger.init();
 
 module.exports = app;
