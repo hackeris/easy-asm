@@ -16,7 +16,7 @@ var recursiveWalkSync = require('./utils/recursive-walk');
 
 var app = express();
 
-app.use(logger('dev'));
+app.use(logger('combined'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
