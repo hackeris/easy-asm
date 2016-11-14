@@ -3,7 +3,7 @@
         <h1>Easy asm</h1>
         <div id="editor-container">
             <textarea id="editor"></textarea>
-            <button style="float: right;" @click="run" class="pure-button">Run</button>
+            <button style="float: right;" @click="run" class="pure-button">运行</button>
         </div>
         <h3>输出：</h3>
         <div id="run-output">
