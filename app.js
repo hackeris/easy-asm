@@ -8,6 +8,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var expressValidator = require('express-validator');
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
+
 var judger = require('./judger');
 
 var config = require('./config/config.json');
@@ -25,7 +27,13 @@ app.set('view engine', 'ejs');
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  maxAge: 1000 * 60 * 60 * 24 * 30,
+  store: new RedisStore({
+    host: '127.0.0.1',
+    port: '6379',
+    db: 1
+  })
 }));
 
 // uncomment after placing your favicon in /public
