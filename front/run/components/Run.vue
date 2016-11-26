@@ -9,10 +9,6 @@
         <div id="run-output">
             <pre>{{ output }}</pre>
         </div>
-        <div id="alipay">
-            <h4 style="text-align: center;">喜欢就支持一下</h4>
-            <img src="/public/images/alipay.png"/>
-        </div>
     </div>
 </template>
 <style>
@@ -25,18 +21,6 @@
 
         #editor-container {
             margin: 20px 0;
-        }
-
-        #alipay {
-            position: fixed;
-            width: 150px;
-            opacity: 0.2;
-            right: 0;
-            bottom: 0;
-        }
-
-        #alipay:hover {
-            opacity: 1.0;
         }
     }
 
@@ -53,15 +37,6 @@
         #editor-container {
             margin: 10px 0;
         }
-
-        #alipay {
-            margin: 80px auto;
-            width: 60%;
-        }
-    }
-
-    #alipay > img {
-        width: 100%;
     }
 
     #editor-container {
